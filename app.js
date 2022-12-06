@@ -14,5 +14,11 @@ app.get('/todo', async (req, res) => {
   res.json(todos);
 })
 
+app.delete('/todo/:id', async (req, res) => {
+  await Todo.delete({ where: { id: req.params.id } })
+
+  res.json({ message: 'todo deleted' })
+})
+
 
 app.listen(port, () => console.log(`App running on port ${port}`));
