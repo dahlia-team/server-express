@@ -14,5 +14,11 @@ app.get('/todo', async (req, res) => {
   res.json(todos);
 })
 
+app.post('/todo', async (req, res) => {
+  const todos = await Todo.create(req.body);
+
+  res.status(201).json(todos);
+})
+
 
 app.listen(port, () => console.log(`App running on port ${port}`));
