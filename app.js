@@ -29,4 +29,18 @@ app.delete('/todo/:id', async (req, res) => {
 })
 
 
+app.post('/todo', async (req, res) => {
+  const todos = await Todo.create(req.body);
+
+  res.status(201).json(todos);
+})
+
+app.put('/todo/:id', async (req, res) => {
+  const todos = await Todo.update(req.body, {
+    where: { id: req.params.id }
+  });
+
+  res.status(201).json(todos);
+})
+
 app.listen(port, () => console.log(`App running on port ${port}`));
