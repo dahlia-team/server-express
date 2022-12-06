@@ -8,5 +8,11 @@ app.post('/register', async (req, res, next) => {
   res.json({ message: 'register success' })
 })
 
+app.get('/todo', async (req, res) => {
+  const todos = await Todo.findAll();
+
+  res.json(todos);
+})
+
 
 app.listen(port, () => console.log(`App running on port ${port}`));
